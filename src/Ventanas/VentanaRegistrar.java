@@ -9,8 +9,7 @@ public class VentanaRegistrar extends JFrame {
     private JPanel mainPanel;
     private CardLayout cardLayout;
     private String tipoMaterial;
-
-    // Colores y fuente
+    
     private final Color fondoBeige = new Color(245, 240, 230);
     private final Color verdePino = new Color(46, 125, 92);
     private final Color cafeBonito = new Color(110, 75, 58);
