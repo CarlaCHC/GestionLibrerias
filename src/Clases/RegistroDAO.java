@@ -14,12 +14,12 @@ public class RegistroDAO {
         try (Connection conn = ConnectionDataBase.getConnection();
              PreparedStatement stmtRegistro = conn.prepareStatement(sqlRegistro, Statement.RETURN_GENERATED_KEYS)) {
 
-            // Insertar el registro
+            // Lic aqui quisimos implementar un registro sobre las ventas y un registro para el material, basicamente esto es para la BASE DE DATOS 
             stmtRegistro.setDate(1, java.sql.Date.valueOf(r.getFecha()));
             stmtRegistro.setString(2, r.getComprador());
             stmtRegistro.executeUpdate();
 
-            // Obtener el ID generado del registro
+            // Aqui ID para el REGISTRO
             java.sql.ResultSet generatedKeys = stmtRegistro.getGeneratedKeys();
             int idRegistro = -1;
 
@@ -29,7 +29,6 @@ public class RegistroDAO {
                 throw new SQLException("No se pudo obtener el ID del registro.");
             }
 
-            // Insertar cada material
             for (Material m : r.getMateriales()) {
                 try (PreparedStatement stmtMaterial = conn.prepareStatement(sqlMaterial)) {
                     stmtMaterial.setString(1, m.getTitulo());
